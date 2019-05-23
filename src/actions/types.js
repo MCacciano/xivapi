@@ -1,0 +1,2 @@
+export const GET_CHARACTER = 'GET_CHARACTER';
+export const FETCH_LODESTONE = 'FETCH_LODESTONE';
