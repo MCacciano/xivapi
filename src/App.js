@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 // Redux
 import { Provider } from 'react-redux';
@@ -6,10 +6,10 @@ import store from './store';
 
 import Navbar from './components/layout/Navbar';
 
-import './App.css';
 import Lodestone from './components/lodestone/Lodestone';
+import './App.css';
 
-function App() {
+const App = () => {
   return (
     <Provider store={store}>
       <Router>
@@ -23,6 +23,6 @@ function App() {
       </Router>
     </Provider>
   );
-}
+};
 
 export default App;

@@ -2,48 +2,44 @@ import React, { useEffect } from 'react';
 import { fetchLodestone } from '../../actions';
 import { connect } from 'react-redux';
 
+import News from './News';
+import Maintenance from './Maintenance';
+import DevBlog from './DevBlog';
+import DevPosts from './DevPosts';
+import Notices from './Notices';
+import Updates from './Updates';
+import Topics from './Topics';
+import Status from './Status';
+
 const Lodestone = ({ fetchLodestone, lodestone }) => {
   useEffect(() => {
     fetchLodestone();
   }, []);
 
-  console.log(lodestone);
-
   const {
-    Banners,
-    DevBlog,
-    DevPosts,
-    Maintenance,
-    News,
-    Notices,
-    Status,
-    Topics,
-    Updates
+    Banners: banners,
+    DevBlog: devBlog,
+    DevPosts: devPosts,
+    Maintenance: maintenance,
+    News: news,
+    top5News,
+    Notices: notices,
+    Status: status,
+    Topics: topics,
+    Updates: updates
   } = lodestone;
 
-  const renderBanners = () => {
-    console.log(Banners);
-    return (
-      Banners !== undefined &&
-      Banners.map(banner => {
-        let { Banner, Url } = banner;
-        return (
-          <li className='column' key={Banner}>
-            <a href={Url}>
-              <figure className='image'>
-                <img src={Banner} alt='banner' />
-              </figure>
-            </a>
-          </li>
-        );
-      })
-    );
-  };
-
   return (
-    <ul style={{ margin: '5px' }} className='columns is-centered'>
-      {renderBanners()}
-    </ul>
+    <div className='content is-centered'>
+      <News news={top5News} />
+      <Maintenance maintenance={maintenance} />
+      <DevBlog devBlog={devBlog} />
+      <DevPosts devPosts={devPosts} />
+      <Notices notices={notices} />
+      <Updates updates={updates} />
+      <Topics topics={topics} />
+      <Status status={status} />
+    </div>
   );
 };
 

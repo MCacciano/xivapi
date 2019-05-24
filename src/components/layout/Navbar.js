@@ -10,9 +10,9 @@ const Navbar = () => {
         </a>
       </div>
       <div className='navbar-menu navbar-end'>
-        <a href='#' className='navbar-item'>
+        <Link to='/' className='navbar-item'>
           Home
-        </a>
+        </Link>
         <a href='#' className='navbar-item'>
           Search
         </a>

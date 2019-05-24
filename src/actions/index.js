@@ -23,11 +23,18 @@ export const fetchCharacter = (name, server) => async dispatch => {
 export const fetchLodestone = () => async dispatch => {
   try {
     const res = await fetch(`https://xivapi.com/lodestone`);
-    const data = await res.json();
+    let data = await res.json();
+
+    const top5News = data.News.filter((item, i) => i < 5);
+
+    data = {
+      ...data,
+      top5News
+    };
 
     dispatch({
       type: FETCH_LODESTONE,
-      payload: data
+      payload: data !== undefined && data
     });
   } catch (err) {
     console.error(err);
