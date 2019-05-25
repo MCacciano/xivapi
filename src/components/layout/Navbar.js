@@ -1,26 +1,64 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import styled from 'styled-components';
+
+const StyledNav = styled.nav`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  height: 8vh;
+  background: rgb(115, 45, 211);
+`;
+
+const Brand = styled.div`
+  grid-column: 1 / 2;
+  display: flex;
+  justify-content: center;
+
+  & h3 {
+    display: inline-block;
+    & a {
+      display: block;
+      width: 100%;
+      text-decoration: none;
+      color: #ffffff;
+      text-align: center;
+    }
+  }
+`;
+
+const NavLinks = styled.div`
+  grid-column: 4 / -1;
+
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  justify-items: center;
+
+  & a {
+    display: block;
+    width: 100%;
+    text-decoration: none;
+    color: #ffffff;
+    text-align: center;
+  }
+`;
+
 const Navbar = () => {
   return (
-    <nav className='navbar is-black'>
-      <div className='navbar-brand navbar-start'>
-        <a className='navbar-item' href='#'>
-          MagickSearch
-        </a>
-      </div>
-      <div className='navbar-menu navbar-end'>
-        <Link to='/' className='navbar-item'>
-          Home
-        </Link>
-        <a href='#' className='navbar-item'>
-          Search
-        </a>
-        <Link to='/lodestone' className='navbar-item'>
-          Lodestone
-        </Link>
-      </div>
-    </nav>
+    <StyledNav>
+      <Brand>
+        <h3>
+          <a href='#'>MagickSearch</a>
+        </h3>
+      </Brand>
+      <NavLinks>
+        <Link to='/'>Home</Link>
+        <a href='#'>Search</a>
+        <Link to='/lodestone'>Lodestone</Link>
+      </NavLinks>
+    </StyledNav>
   );
 };
 

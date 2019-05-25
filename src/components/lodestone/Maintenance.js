@@ -11,12 +11,13 @@ const Maintenance = ({ maintenance }) => {
 
         return (
           <li key={Time}>
-            <a href={Url} target='_new'>
+            {Title}
+            {/* <a href={Url} target='_new'>
               <h3>
                 {Title}
                 <small>{Tag}</small>
               </h3>
-            </a>
+            </a> */}
           </li>
         );
       })

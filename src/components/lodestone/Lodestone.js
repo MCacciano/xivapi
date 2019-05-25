@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import News from './News';
 import Maintenance from './Maintenance';
-import DevBlog from './DevBlog';
+import DevBlog from './devBlog/DevBlog';
 import DevPosts from './DevPosts';
 import Notices from './Notices';
 import Updates from './Updates';
@@ -30,9 +30,9 @@ const Lodestone = ({ fetchLodestone, lodestone }) => {
   } = lodestone;
 
   return (
-    <div className='content is-centered'>
+    <div>
       <News news={top5News} />
-      <Maintenance maintenance={maintenance} />
+      {/* <Maintenance maintenance={maintenance} /> */}
       <DevBlog devBlog={devBlog} />
       <DevPosts devPosts={devPosts} />
       <Notices notices={notices} />

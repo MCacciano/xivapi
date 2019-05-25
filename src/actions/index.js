@@ -34,7 +34,7 @@ export const fetchLodestone = () => async dispatch => {
 
     dispatch({
       type: FETCH_LODESTONE,
-      payload: data !== undefined && data
+      payload: data
     });
   } catch (err) {
     console.error(err);

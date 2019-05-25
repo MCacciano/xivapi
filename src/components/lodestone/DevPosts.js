@@ -21,8 +21,9 @@ const DevPosts = ({ devPosts }) => {
         } = item;
 
         return (
-          <li className='column is-4 has-text-centered' key={id}>
-            <div className='box'>
+          <li key={id}>
+            {title}
+            {/* <div className='box'>
               <article className='media'>
                 <div className='media-left'>
                   <figure className='image is-64x64'>
@@ -41,7 +42,7 @@ const DevPosts = ({ devPosts }) => {
                   </div>
                 </div>
               </article>
-            </div>
+            </div> */}
           </li>
         );
       })

@@ -7,6 +7,7 @@ import store from './store';
 import Navbar from './components/layout/Navbar';
 
 import Lodestone from './components/lodestone/Lodestone';
+import EntryDetail from './components/lodestone/devBlog/EntryDetail';
 import './App.css';
 
 const App = () => {
@@ -18,6 +19,11 @@ const App = () => {
           <Switch>
             <Route exact path='/' />
             <Route exact path='/lodestone' component={Lodestone} />
+            <Route
+              exact
+              path='/lodestone/devBlog/:title'
+              component={EntryDetail}
+            />
           </Switch>
         </Fragment>
       </Router>
