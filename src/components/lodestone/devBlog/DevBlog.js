@@ -56,7 +56,7 @@ const DevBlog = ({ devBlog }) => {
                 <Link
                   to={{
                     pathname: `/lodestone/devblog/${urlTitle}`,
-                    state: { content }
+                    state: { item }
                   }}
                 >
                   {title}

@@ -1,4 +1,9 @@
-import { GET_CHARACTER, FETCH_LODESTONE } from '../actions/types';
+import {
+  GET_CHARACTER,
+  FETCH_LODESTONE,
+  FETCH_FREE_COMPANY,
+  FREE_COMPANY_SEARCH
+} from '../actions/types';
 
 ///////////////////////////////////////////////
 ////////////// CHARACTER ACTIONS //////////////
@@ -38,5 +43,46 @@ export const fetchLodestone = () => async dispatch => {
     });
   } catch (err) {
     console.error(err);
+  }
+};
+
+///////////////////////////////////////////////
+//////////// FREE COMPNAY ACTIONS ////////////
+///////////////////////////////////////////////
+
+export const freeCompanySearch = (name = '', server = '') => async dispatch => {
+  try {
+    const res = await fetch(
+      `https://xivapi.com/freecompany/search?name=${name}&server=${server}`
+    );
+
+    const data = await res.json();
+
+    console.log(data);
+
+    dispatch({
+      type: FREE_COMPANY_SEARCH,
+      payload: data
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const fetchFreeCompany = (id = '') => async dispatch => {
+  try {
+    const res = await fetch(
+      `https://xivapi.com/freecompany/${id}?extended=1&data=FCM`
+    );
+    const data = await res.json();
+
+    console.log(data);
+
+    dispatch({
+      type: FETCH_FREE_COMPANY,
+      payload: data
+    });
+  } catch (err) {
+    console.log(err);
   }
 };

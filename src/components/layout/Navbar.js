@@ -50,12 +50,12 @@ const Navbar = () => {
     <StyledNav>
       <Brand>
         <h3>
-          <a href='#'>MagickSearch</a>
+          <Link to='/'>MagickSearch</Link>
         </h3>
       </Brand>
       <NavLinks>
-        <Link to='/'>Home</Link>
-        <a href='#'>Search</a>
+        <Link to='/freeCompany'>FC</Link>
+        <Link to='/search'>Search</Link>
         <Link to='/lodestone'>Lodestone</Link>
       </NavLinks>
     </StyledNav>
