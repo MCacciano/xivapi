@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import SearchResult from './SearchResult';
 
@@ -12,7 +12,7 @@ const StyledResults = styled.ul`
   grid-gap: 1rem;
 `;
 
-const Results = ({ results }) => {
+const SearchResults = ({ results }) => {
   const renderResults = () => {
     return results.map(searchResult => {
       return <SearchResult result={searchResult} key={searchResult.ID} />;
@@ -22,4 +22,4 @@ const Results = ({ results }) => {
   return <StyledResults>{renderResults()}</StyledResults>;
 };
 
-export default Results;
+export default SearchResults;

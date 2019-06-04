@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 import { connect } from 'react-redux';
-import { fetchItemDetail } from '../../actions';
 
 import styled from 'styled-components';
+
+import { fetchItemDetail } from '../../actions';
 
 const StyledResult = styled.li`
   display: grid;
@@ -35,13 +35,22 @@ const ResultName = styled.p`
 
 const SearchResult = ({ result, itemDetails }) => {
   const { ID, Icon, Name, Url, UrlType } = result;
+
+  const fetchTest = () => {
+    // fetch(`https://xivapi.com${Url}`)
+    //   .then(res => res.json())
+    //   .then(data => console.log(data));
+    fetchItemDetail(Url);
+  };
+
   return (
-    <StyledResult>
+    <StyledResult onClick={fetchTest}>
+      <button onClick={fetchTest} />
       <StyledIcon src={`https://xivapi.com${Icon}`} alt='icon' />
       <DetailLink
         to={{
           pathname: `/search${Url}-${Name.replace(/\s+/g, '_')}`,
-          state: { itemDetails }
+          state: { result }
         }}
       >
         <ResultName>{Name}</ResultName>
@@ -50,14 +59,8 @@ const SearchResult = ({ result, itemDetails }) => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    itemDetails: state.itemDetails
-  };
-};
-
 export default connect(
-  mapStateToProps,
+  null,
   {
     fetchItemDetail
   }

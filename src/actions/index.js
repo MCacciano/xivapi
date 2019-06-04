@@ -89,12 +89,9 @@ export const fetchFreeCompany = (id = '') => async dispatch => {
 //////////// SEARCH ACTIONS ////////////
 ///////////////////////////////////////////////
 export const searchAll = (searchString = '') => async dispatch => {
-  console.log(searchString);
   try {
     const res = await fetch(`https://xivapi.com/search?string=${searchString}`);
     const data = await res.json();
-
-    console.log(data.Results);
 
     dispatch({
       type: SEARCH_ALL,
@@ -106,9 +103,12 @@ export const searchAll = (searchString = '') => async dispatch => {
 };
 
 export const fetchItemDetail = (url = '') => async dispatch => {
+  console.log(url);
   try {
     const res = await fetch(`https://xivapi.com${url}`);
     const data = await res.json();
+
+    console.log(data);
 
     dispatch({
       type: FETCH_ITEM_DETAIL,

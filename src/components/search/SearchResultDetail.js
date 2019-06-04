@@ -1,7 +1,8 @@
 import React from 'react';
 
-const ItemDetail = props => {
+const SearchResultDetail = props => {
   console.log(props);
+
   return (
     <div>
       <h2>placeholder</h2>
@@ -9,4 +10,4 @@ const ItemDetail = props => {
   );
 };
 
-export default ItemDetail;
+export default SearchResultDetail;
