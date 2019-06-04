@@ -2,7 +2,9 @@ import {
   GET_CHARACTER,
   FETCH_LODESTONE,
   FETCH_FREE_COMPANY,
-  FREE_COMPANY_SEARCH
+  FREE_COMPANY_SEARCH,
+  SEARCH_ALL,
+  FETCH_ITEM_DETAIL
 } from '../actions/types';
 
 ///////////////////////////////////////////////
@@ -58,8 +60,6 @@ export const freeCompanySearch = (name = '', server = '') => async dispatch => {
 
     const data = await res.json();
 
-    console.log(data);
-
     dispatch({
       type: FREE_COMPANY_SEARCH,
       payload: data
@@ -76,13 +76,45 @@ export const fetchFreeCompany = (id = '') => async dispatch => {
     );
     const data = await res.json();
 
-    console.log(data);
-
     dispatch({
       type: FETCH_FREE_COMPANY,
       payload: data
     });
   } catch (err) {
     console.log(err);
+  }
+};
+
+///////////////////////////////////////////////
+//////////// SEARCH ACTIONS ////////////
+///////////////////////////////////////////////
+export const searchAll = (searchString = '') => async dispatch => {
+  console.log(searchString);
+  try {
+    const res = await fetch(`https://xivapi.com/search?string=${searchString}`);
+    const data = await res.json();
+
+    console.log(data.Results);
+
+    dispatch({
+      type: SEARCH_ALL,
+      payload: data.Results
+    });
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export const fetchItemDetail = (url = '') => async dispatch => {
+  try {
+    const res = await fetch(`https://xivapi.com${url}`);
+    const data = await res.json();
+
+    dispatch({
+      type: FETCH_ITEM_DETAIL,
+      payload: data.Results
+    });
+  } catch (err) {
+    console.error(err);
   }
 };

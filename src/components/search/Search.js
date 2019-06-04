@@ -2,18 +2,23 @@ import React, { Fragment } from 'react';
 
 import { connect } from 'react-redux';
 
-import styled from 'styled-components';
+import SearchResults from './SearchResults';
 
-import SearchBar from './SearchBar';
-import Results from './Results';
-
-const Search = () => {
+const Search = ({ searchAll, searchAllResults }) => {
   return (
     <Fragment>
-      <SearchBar />
-      <Results />
+      <SearchResults results={searchAllResults} />
     </Fragment>
   );
 };
 
-export default Search;
+const mapStateToProps = state => {
+  return {
+    searchAllResults: state.searchAllResults
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  {}
+)(Search);

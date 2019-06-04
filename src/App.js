@@ -10,6 +10,8 @@ import Lodestone from './components/lodestone/Lodestone';
 import EntryDetail from './components/lodestone/devBlog/EntryDetail';
 import FreeCompany from './components/freeCompany/FreeCompany';
 import Search from './components/search/Search';
+import SearchResults from './components/search/SearchResults';
+import SearchResultDetail from './components/search/SearchResultDetail';
 import './App.css';
 
 const App = () => {
@@ -23,6 +25,8 @@ const App = () => {
             <Route exact path='/freeCompany' component={FreeCompany} />
             <Route exact path='/lodestone' component={Lodestone} />
             <Route exact path='/search' component={Search} />
+            <Route exact path='/results' component={SearchResults} />
+            <Route path='/search/:url' component={SearchResultDetail} />
             <Route
               exact
               path='/lodestone/devBlog/:title'

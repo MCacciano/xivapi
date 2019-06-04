@@ -1,61 +1,60 @@
 import React, { useState, Fragment } from 'react';
 import { connect } from 'react-redux';
+import { Redirect, Link } from 'react-router-dom';
 
 // actions
-import { freeCompanySearch, fetchFreeCompany } from '../../actions';
+import { freeCompanySearch, fetchFreeCompany, searchAll } from '../../actions';
 
 import styled from 'styled-components';
 
-import Result from './Result';
-import Results from './Results';
+import SearchButton from './SearchButton';
 
 const StyledSearchBar = styled.form`
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  margin: 1em 0 0 0;
+  grid-column: 2 / 4;
+
+  display: flex;
+  width: 80%;
 `;
 
 const Input = styled.input`
   height: 2.5em;
-  grid-column: 5 / 8;
+  flex: 1 1 auto;
 `;
 
-const Button = styled.button`
-  height: 2.5em;
-  grid-column: 8 / 9;
-`;
-
-const SearchBar = ({ fetchFreeCompany, freeCompanySearch, freeCompany }) => {
-  const [searchTerm, setSearchTerm] = useState({
-    fcName: ''
+const SearchBar = props => {
+  const { fetchFreeCompany, freeCompanySearch, freeCompany, searchAll } = props;
+  const [searchState, setSearchState] = useState({
+    search: '',
+    redirect: false
   });
 
   const onSearchInputChange = e => {
-    setSearchTerm({
+    setSearchState({
       [e.target.name]: e.target.value
     });
   };
 
   const onSearchSubmit = e => {
     e.preventDefault();
+    console.log(searchState);
+    searchAll(searchState.search);
+    searchState.redirect = true;
+  };
 
-    console.log(searchTerm);
-
-    freeCompanySearch(searchTerm.fcName, 'Leviathan');
+  const redirectToSearch = () => {
+    console.log(props);
   };
 
   return (
-    <Fragment>
-      <StyledSearchBar onSubmit={onSearchSubmit}>
-        <Input
-          onChange={onSearchInputChange}
-          name='fcName'
-          type='text'
-          placeholder='search for a FC'
-        />
-        <Button>Search</Button>
-      </StyledSearchBar>
-    </Fragment>
+    <StyledSearchBar onSubmit={onSearchSubmit}>
+      <Input
+        onChange={onSearchInputChange}
+        name='search'
+        type='text'
+        placeholder='search for a FC'
+      />
+      <SearchButton />
+    </StyledSearchBar>
   );
 };
 
@@ -66,9 +65,10 @@ const mapStateToProps = state => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   {
     freeCompanySearch,
-    fetchFreeCompany
+    fetchFreeCompany,
+    searchAll
   }
 )(SearchBar);

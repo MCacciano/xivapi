@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import { fetchFreeCompany } from '../../actions/index';
 
 const FreeCompany = ({ fetchFreeCompany }) => {
-  useEffect(() => {
-    // fetchFreeCompany('Git+Gud', 'Leviathan');
-    fetchFreeCompany('9232379236109559306');
-  }, []);
+  // useEffect(() => {
+  //   // fetchFreeCompany('Git+Gud', 'Leviathan');
+  //   fetchFreeCompany('9232379236109559306');
+  // }, []);
 
   return (
     <div>
